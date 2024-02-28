@@ -1,0 +1,182 @@
+import java.sql.SQLOutput;
+import java.util.ArrayList;
+public class Alg {
+    public static void print(String[] arr)
+    {
+        String str = "[";
+        for(int i = 0; i < arr.length - 1; i++) {
+            str += arr[i] + ", ";
+            }
+        str += arr[arr.length - 1];
+        System.out.println(str + "]");
+    }
+    public static int smallest(int index, String[] arr)
+    {
+        int Update = 0;
+        String min = arr[index];
+        for(int i = index; i < arr.length; i++)
+        {
+            if(min.compareToIgnoreCase(arr[i]) > 0)
+            {
+                min = arr[i];
+                index = i;
+                Update++;
+            }
+        }
+        System.out.println("Min Updates: " + Update);
+        return index;
+    }
+    public static void switchs(String[] arr, int i, int j)
+    {
+        String hold = arr[i];
+        arr[i] = arr[j];
+        arr[j] = hold;
+    }
+    public static void selectionSort(String[] arr)
+    {
+        int swaps = 0;
+        for(int i = 0; i < arr.length; i++)
+        {
+            int min = smallest(i, arr);
+            if(min != i)
+            {
+                switchs(arr, i, min);
+                swaps++;
+            }
+            print(arr);
+        }
+        System.out.println("Swaps: " + swaps);
+    }
+    public static void insertionSort(String[] arr)
+    {
+        int swap = 0;
+        for(int i = 1; i < arr.length; i++)
+        {
+            String hold = arr[i];
+            int index = i;
+            while(index > 0 && hold.compareToIgnoreCase(arr[index - 1]) <= 0)
+            {
+                switchs(arr, index, index - 1);
+                swap++;
+                index--;
+            }
+            print(arr);
+        }
+        System.out.println("Swaps: " + swap);
+    }
+    public static void printer(ArrayList<String> arr){
+
+        String printer = "[";
+        for(int i = 0; i<arr.size()-1; i++){
+            printer+= arr.get(i) + ", ";
+        }
+        printer += arr.get(arr.size()-1);
+        System.out.println( printer + "]");
+    }
+
+    public static int findMiny(int index, ArrayList<String> arr){
+        int numChanged = 0;
+        String min = arr.get(index);
+        for(int i = index; i<arr.size(); i++){
+            if(min.compareToIgnoreCase(arr.get(i)) > 0){
+                numChanged++;
+                min = arr.get(i);
+                index = i;
+            }
+        }
+        System.out.println("Minimum Updates: " + numChanged);
+        return index;
+    }
+
+    public static void switche (ArrayList<String> arr, int p, int a){
+        String pause = arr.get(p);
+        arr.set(p,arr.get(a));
+        arr.set(a, pause);
+    }
+
+    public static void selectionSorter(ArrayList<String> arr){
+        int swapperupper = 0;
+        for(int i = 0; i<arr.size();i++){
+            int mini = findMiny(i, arr);
+            if (mini != i){
+                switche(arr, i, mini);
+                swapperupper++;
+            }
+            printer(arr);
+        }
+        System.out.println("Swaps: " + swapperupper);
+    }
+
+    public static void insertionSorter(ArrayList<String>arr){
+        int swapper = 0;
+        for(int i = 1; i< arr.size(); i++){
+            String pause = arr.get(i);
+            int index = i;
+            while(index>0 && pause.compareToIgnoreCase(arr.get(index-1))<=0){
+                switche(arr, index, index-1);
+                swapper ++;
+                index--;
+            }
+            printer(arr);
+        }
+        System.out.println("Swaps: " + swapper);
+    }
+
+
+    public static void printed(ArrayList<Integer> arr){
+        String printed = "[";
+        for(int i = 0; i<arr.size()-1; i++){
+            printed+= arr.get(i) + ", ";
+        }
+        printed += arr.get(arr.size() - 1);
+        System.out.println( printed + "]");
+    }
+
+    public static int findMini(int index, ArrayList<Integer> arr){
+        int num = 0;
+        int min = arr.get(index);
+        for(int i = index; i<arr.size(); i++){
+            if(min>arr.get(i)){
+                num++;
+                min = arr.get(i);
+                index = i;
+            }
+        }
+        System.out.println("Minimum Updates: " + num);
+        return index;
+    }
+
+    public static void switchy (ArrayList<Integer> arr, int p, int a){
+        int pause = arr.get(p);
+        arr.set(p,arr.get(a));
+        arr.set(a, pause);
+    }
+
+    public static void selectionSortered(ArrayList<Integer> arr){
+        int swapperupper = 0;
+        for(int i = 0; i<arr.size();i++){
+            int mini = findMini(i, arr);
+            if (mini != i){
+                switchy(arr, i, mini);
+                swapperupper++;
+            }
+            printed(arr);
+        }
+        System.out.println("Swaps: " + swapperupper);
+    }
+
+    public static void insertionSortered(ArrayList<Integer>arr){
+        int swapp = 0;
+        for(int i = 1; i< arr.size(); i++){
+            int pause = arr.get(i);
+            int index = i;
+            while(index>0 && pause<=arr.get(index-1)){
+                switchy(arr, index, index-1);
+                swapp ++;
+                index--;
+            }
+            printed(arr);
+        }
+        System.out.println("Swaps: " + swapp);
+    }
+}
